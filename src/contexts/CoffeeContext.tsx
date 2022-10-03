@@ -20,9 +20,6 @@ interface CartContextProps {
   deleteCoffee: (coffeeId: number) => void;
   changeAmountOfCoffee: (coffeeId: number, options: 'addCoffee' | 'removeCoffee') => void;
   clearCartShopping: () => void;
-  buttonCredit: () => void;
-  buttonDebit: () => void;
-  buttonMoney: () => void;
 }
 
 export const CartContext = createContext({} as CartContextProps);
@@ -88,18 +85,6 @@ export function CartProvider({ children }: ItemCartProviderProps) {
     setCartCoffees([]);
   }
 
-  function buttonCredit() {
-    setTypeOfPayment(state => state = 'Cartão de crédito');
-  }
-
-  function buttonDebit() {
-    setTypeOfPayment(state => state = 'Cartão de débito');
-  }
-  
-  function buttonMoney() {
-    setTypeOfPayment(state => state = 'Dinheiro');
-  }
-
   useEffect(() => {
     localStorage.setItem('@coffeeDelivery-ignite:cartOfCoffee', JSON.stringify(cartCoffees));
   }, [cartCoffees]);
@@ -115,9 +100,6 @@ export function CartProvider({ children }: ItemCartProviderProps) {
         deleteCoffee,
         changeAmountOfCoffee,
         clearCartShopping,
-        buttonCredit,
-        buttonDebit,
-        buttonMoney,
       }}
     >
       {children}

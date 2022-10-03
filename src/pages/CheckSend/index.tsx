@@ -1,9 +1,8 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import ImageSend from '../../assets/ImageSend.svg';
-import { CartContext } from '../../contexts/CoffeeContext';
 import { OrderFormData } from '../CheckInfo';
 import { CardDollar, CardMap, CardTimer, SendDivHead, SendDivInfo, SendDivInfoCard, SendImg, SendMain, SendMainDiv } from './styles';
 
@@ -12,7 +11,6 @@ interface LocationProps {
 }
 
 export function CheckSend() {
-  const { typeOfPayment } = useContext(CartContext);
   const navigate = useNavigate();
   const { state } = useLocation() as unknown as LocationProps;
 

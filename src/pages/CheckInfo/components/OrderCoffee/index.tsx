@@ -1,7 +1,5 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
-import { CartContext } from "../../../../contexts/CoffeeContext";
 
 import { OderCards, OderInputDiv, OderInputDivOne, OderPayment, OrderInput, OrderInputForm, OrderInputTitle, PaymentTitle, TypeOfPayment } from "./styles";
 
@@ -14,7 +12,6 @@ interface ErrorType {
 }
 
 export function OrderCoffee() {
-  const { buttonCredit, buttonDebit, buttonMoney } = useContext(CartContext);
   const { register, formState } = useFormContext();
   const { errors } = formState as unknown as ErrorType;
 

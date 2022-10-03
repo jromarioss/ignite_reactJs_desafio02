@@ -79,7 +79,6 @@ export const OderInputDivOne = styled.div`
 
 export const OderPayment = styled.div`
   width: 40rem;
-  height: 12.9375rem;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
