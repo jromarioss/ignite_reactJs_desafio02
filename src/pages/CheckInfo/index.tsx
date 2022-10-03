@@ -9,6 +9,12 @@ import { CheckInfoMain } from "./styles";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CoffeeContext";
 
+enum PaymentType {
+  credit = 'Cartão de Crédito',
+  debit = 'Cartão de Débito',
+  money = 'Dinheiro',
+}
+
 const OrderFormValidationSchema = zod.object({
   cep: zod.string().min(3, "Informe o CEP."),
   rua: zod.string().min(3, "Informe o nome da rua."),
@@ -16,7 +22,12 @@ const OrderFormValidationSchema = zod.object({
   complemento: zod.string().min(3, "Informe o complemento."),
   bairro: zod.string().min(3, "Informe o bairro."),
   cidade: zod.string().min(3, "Informe a cidade."),
-  uf: zod.string().min(2, "Informe o estado.")
+  uf: zod.string().min(2, "Informe o estado."),
+  typeOfPayment: zod.nativeEnum(PaymentType, {
+    errorMap: () => {
+      return { message: "Informe o método de pagamento"}
+    }
+  }),
 });
 
 export type OrderFormData = zod.infer<typeof OrderFormValidationSchema>
@@ -26,7 +37,9 @@ export function CheckInfo() {
   const navigate = useNavigate();
   const formValidation = useForm<OrderFormData>({
     resolver: zodResolver(OrderFormValidationSchema),
-    
+    defaultValues: {
+      typeOfPayment: undefined,
+    }
   });
 
   const { handleSubmit } = formValidation

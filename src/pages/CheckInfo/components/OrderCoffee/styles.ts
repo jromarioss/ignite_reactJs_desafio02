@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const OderCards = styled.main`
   width: 100%;
+  padding-bottom: 5rem;
 `;
 
 export const OrderInput = styled.div`
@@ -108,31 +109,45 @@ export const PaymentTitle = styled.div`
 
 export const TypeOfPayment = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
-`;
 
-export const CardsOptions = styled.button`
-  width: 11.166875rem;
-  height: 3.1875rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  background-color: ${(props) => props.theme["base-button"]};
-  color: ${(props) => props.theme["base-text"]};
-  font-size: 0.75rem;
-  border: 0;
-  border-radius: 6px;
+  p {
+      color: red;
+      font-size: 1rem;
+      text-align: center;
+    }
 
-  span {
-    color: ${(props) => props.theme.purple};
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
   }
 
-  &:hover {
-    background-color: ${(props) => props.theme["base-hover"]};
+  div input {
+    display: none;
+  }
+
+  div label {
+    width: 11.166875rem;
+    height: 3.1875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: ${(props) => props.theme["base-button"]};
+    color: ${(props) => props.theme["base-text"]};
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: ${(props) => props.theme["base-hover"]};
+    }
   }
   
-  &:active {
+  div input:checked + label {
     border: 1px solid ${(props) => props.theme.purple};
     background-color: ${(props) => props.theme["purple-light"]};
   }

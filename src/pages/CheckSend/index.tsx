@@ -56,7 +56,7 @@ export function CheckSend() {
             </CardDollar>
             <div>
               <p>Pagamento na entrega</p>
-              <p style={{fontWeight: 'bold'}}>{typeOfPayment}</p>
+              <p style={{fontWeight: 'bold'}}>{state.typeOfPayment}</p>
             </div>
           </SendDivInfoCard>
         </SendDivInfo>

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useFormContext } from "react-hook-form";
 import { CartContext } from "../../../../contexts/CoffeeContext";
 
-import { CardsOptions, OderCards, OderInputDiv, OderInputDivOne, OderPayment, OrderInput, OrderInputForm, OrderInputTitle, PaymentTitle, TypeOfPayment } from "./styles";
+import { OderCards, OderInputDiv, OderInputDivOne, OderPayment, OrderInput, OrderInputForm, OrderInputTitle, PaymentTitle, TypeOfPayment } from "./styles";
 
 interface ErrorType {
   errors: {
@@ -74,17 +74,24 @@ export function OrderCoffee() {
         </PaymentTitle>
 
         <TypeOfPayment>
-          <CardsOptions type="button" onClick={buttonCredit}>
-            <span><CreditCard size={14} /></span> CARTÃO DE CRÉDITO
-          </CardsOptions>
+          <div>
+            <input type="radio" id="credit" {...register('typeOfPayment')} value="Cartão de Crédito" />
+            <label htmlFor="credit">
+              <span><CreditCard size={16} color="#8047F8" /></span> CARTÃO DE CRÉDITO
+            </label>
 
-          <CardsOptions type="button" onClick={buttonDebit}>
-            <span><Bank size={14} /></span> CARTÃO DE DÉBITO
-          </CardsOptions>
+            <input type="radio" id="debit" {...register('typeOfPayment')} value="Cartão de Débito" />
+            <label htmlFor="debit">
+              <span><Bank size={16} color="#8047F8" /></span> CARTÃO DE DÉBITO
+            </label>
+          
+            <input type="radio" id="money" {...register('typeOfPayment')} value="Dinheiro" />
+            <label htmlFor="money">
+              <span><Money size={16} color="#8047F8" /></span> DINHEIRO
+            </label>
+          </div>
 
-          <CardsOptions type="button" onClick={buttonMoney}>
-            <span><Money size={14} /></span> DINHEIRO
-          </CardsOptions>
+          <p>{errors.typeOfPayment?.message}</p>
         </TypeOfPayment>
       </OderPayment>
     </OderCards>
